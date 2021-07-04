@@ -1,4 +1,4 @@
-package testcases;
+package utilities;
 
 import java.io.IOException;
 
@@ -11,8 +11,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-import resources.ExtentReporterNG;
-import resources.Base;
+import operations.Base;
 
 public class Listeners extends Base implements ITestListener {
 	ExtentTest test;
@@ -20,20 +19,15 @@ public class Listeners extends Base implements ITestListener {
 	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
 	public void onTestStart(ITestResult result) {
-		// TODO Auto-generated method stub
 		test = extent.createTest(result.getMethod().getMethodName());
 		extentTest.set(test);
-
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		// TODO Auto-generated method stub
-		extentTest.get().log(Status.PASS, "Test Passed");
+		// extentTest.get().log(Status.PASS, "Test Passed");
 	}
 
 	public void onTestFailure(ITestResult result) {
-		// TODO Auto-generated method stub
-		// Screenshot
 		extentTest.get().fail(result.getThrowable());
 		WebDriver driver = null;
 		String testMethodName = result.getMethod().getMethodName();
@@ -44,12 +38,10 @@ public class Listeners extends Base implements ITestListener {
 		} catch (Exception e) {
 
 		}
-		try {
-			getScreenShotPath(testMethodName, driver);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		/*
+		 * try { getScreenShotPath(testMethodName, driver); } catch (IOException e1) {
+		 * // TODO Auto-generated catch block e1.printStackTrace(); }
+		 */
 
 	}
 

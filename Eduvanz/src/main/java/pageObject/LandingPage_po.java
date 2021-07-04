@@ -22,5 +22,4 @@ public class LandingPage_po {
 	public WebElement Dresses() {
 		return driver.findElement(dresses);
 	}
-
 }

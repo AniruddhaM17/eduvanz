@@ -1,4 +1,4 @@
-package resources;
+package utilities;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
@@ -12,7 +12,7 @@ public class ExtentReporterNG {
 
 		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
 
-		reporter.config().setReportName("Edelweiss Test");
+		reporter.config().setReportName("Eduvanz Test");
 
 		reporter.config().setDocumentTitle("Test Results");
 

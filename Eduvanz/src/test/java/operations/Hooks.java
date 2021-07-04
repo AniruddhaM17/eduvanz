@@ -1,4 +1,4 @@
-package testcases;
+package operations;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -9,24 +9,24 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import resources.Base;
+import utilities.Wait;
 
 public class Hooks extends Base {
 
 	@BeforeTest
 	public void Initilization() throws IOException {
 		driver = DriverInitilization();
-		driver.get(prop.getProperty("url"));
-		log.info("Website is opening");
-		driver.manage().window().maximize();
-		log.trace("maximize screen");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get(prop.getProperty("url")); //Website is opening
+		// log.info("Website is opening");
+		driver.manage().window().maximize(); //Maximize screen
+		// log.trace("maximize screen");
+		Wait.impWait(driver, 30);
+		
+		// static final Logger log = LogManager.getLogger(Logic.class.getName());
 	}
-
-	static final Logger log = LogManager.getLogger(Logic.class.getName());
 
 	@AfterTest
 	public void tearDown() {
-		driver.quit();
+		driver.close();
 	}
 }

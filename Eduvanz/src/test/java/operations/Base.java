@@ -1,4 +1,4 @@
-package resources;
+package operations;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,35 +22,39 @@ public class Base {
 	public WebDriver DriverInitilization() throws IOException {
 
 		prop = new Properties();
-		FileInputStream fis = new FileInputStream(
-				System.getProperty("user.dir") + "\\src\\main\\java\\resources\\data.properties");
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\files\\data.properties");
 		prop.load(fis);
 
 		String browserName = prop.getProperty("browser");
 
 		if (browserName.equals("chrome")) {
+			// For initilization Chrome Driver
 			System.setProperty("webdriver.chrome.driver",
-					System.getProperty("user.dir") + "\\src\\main\\java\\resources\\chromedriver.exe");
+					System.getProperty("user.dir") + "\\drivers\\chromedriver.exe");
 			driver = new ChromeDriver();
 
 		} else if (browserName.equals("firefox")) {
+			// For initilization Firefox Driver
 			System.setProperty("webdriver.gecko.driver",
-					System.getProperty("user.dir") + "\\src\\main\\java\\resources\\geckodriver.exe");
+					System.getProperty("user.dir") + "\\drivers\\geckodriver.exe");
 			driver = new FirefoxDriver();
 
 		} else if (browserName.equals("IE")) {
+			// For initilization Internet Explorer Driver)
 			System.setProperty("webdriver.ie.driver",
-					System.getProperty("user.dir") + "\\src\\main\\java\\resources\\IEDriverServer.exe");
+					System.getProperty("user.dir") + "\\drivers\\IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 		}
 		return driver;
 	}
 
-	public String getScreenShotPath(String testCaseName, WebDriver driver) throws IOException {
-		TakesScreenshot tis = (TakesScreenshot) driver;
-		File source = tis.getScreenshotAs(OutputType.FILE);
-		String destinationFile = System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png";
-		FileUtils.copyFile(source, new File(destinationFile));
-		return destinationFile;
-	}
+	// To take screenshot
+	/*
+	 * public String getScreenShotPath(String testCaseName, WebDriver driver) throws
+	 * IOException { TakesScreenshot screenshot = (TakesScreenshot) driver; File
+	 * source = screenshot.getScreenshotAs(OutputType.FILE); String destinationFile
+	 * = System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png";
+	 * FileUtils.copyFile(source, new File(destinationFile)); return
+	 * destinationFile; }
+	 */
 }

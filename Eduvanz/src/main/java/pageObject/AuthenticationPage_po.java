@@ -21,7 +21,7 @@ public class AuthenticationPage_po {
 
 		Random randomGenerator = new Random();
 		int randomInt = randomGenerator.nextInt(1000);
-		driver.findElement(emailBox).sendKeys("username" + randomInt + "@gmail000.com");
+		driver.findElement(emailBox).sendKeys("username" + randomInt + "@gmail001.com");
 	}
 
 	public WebElement CreateAccountbtn() {
