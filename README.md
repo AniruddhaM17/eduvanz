@@ -1,4 +1,4 @@
-# eduvanz
+**# eduvanz**
 
 **Technical Test Details**
 Register with new user
